@@ -15,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.hotelBookingSystem.hotelSystem.serviceImpl.MyUserDetailsService;
 
@@ -25,6 +26,9 @@ public class SecurityConfig {
 
 	@Autowired
 	private MyUserDetailsService userDetail;
+	
+	@Autowired
+	private JwtFilter jwtFilter;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -43,8 +47,7 @@ public class SecurityConfig {
 				.anyRequest().authenticated())
                 
 				.authenticationProvider(authenticationProvider())
-				.httpBasic(Customizer.withDefaults());
-//				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED));
+				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 				
 		
 		return http.build();
