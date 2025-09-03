@@ -23,6 +23,12 @@ public class GlobalExceptionHandler {
 		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(RoomNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleRoomNotFound (RoomNotFoundException ex) {
+		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);		
+	}
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> handleException (Exception ex) {
