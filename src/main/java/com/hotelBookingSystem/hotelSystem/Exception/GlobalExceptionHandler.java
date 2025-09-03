@@ -17,6 +17,12 @@ public class GlobalExceptionHandler {
 		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND); 
 	}
+	
+	@ExceptionHandler(HotelNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleHotelNotFound (HotelNotFoundException ex) {
+		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	}
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> handleException (Exception ex) {

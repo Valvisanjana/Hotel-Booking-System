@@ -10,11 +10,11 @@ public interface HotelService {
 	
 	HotelDto getHotelById(int id);
 	
-	HotelDto getHotelByName(String name);
+	HotelDto getHotelByName(String hotelName);
 	
 	List<HotelDto> getHotels();
 	
-	HotelDto updateHotelInfo(HotelDto hotel);
+	HotelDto updateHotelInfo(HotelDto hotel, int id);
 	
-	void deleteHotelById(int id);
+	String deleteHotelById(int id);
 }
