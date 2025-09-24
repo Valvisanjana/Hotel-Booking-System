@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hotelBookingSystem.hotelSystem.dto.AddressDto;
 import com.hotelBookingSystem.hotelSystem.service.AddressService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/address")
 public class AddressController {
@@ -24,7 +26,7 @@ public class AddressController {
 	
 	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/add")
-	public ResponseEntity<AddressDto> addAddress(@RequestBody AddressDto addressDto){
+	public ResponseEntity<AddressDto> addAddress(@Valid @RequestBody AddressDto addressDto){
 		return ResponseEntity.ok(addressService.addAddress(addressDto));
 	}
 	

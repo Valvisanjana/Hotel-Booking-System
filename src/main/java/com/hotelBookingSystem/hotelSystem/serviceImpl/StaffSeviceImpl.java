@@ -61,6 +61,7 @@ public class StaffSeviceImpl implements StaffService {
 		                    staff.getEmail(),
 		                    staff.getPhone_Number(),
 		                    staff.getRole(),
+		                    staff.getAge(),
 		                    staff.getJoiningDate()
 		            ))
 		            .collect(Collectors.toList());

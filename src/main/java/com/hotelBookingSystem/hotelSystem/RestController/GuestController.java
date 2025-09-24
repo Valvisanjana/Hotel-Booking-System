@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hotelBookingSystem.hotelSystem.dto.GuestDto;
 import com.hotelBookingSystem.hotelSystem.service.GuestService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/guest")
 public class GuestController {
@@ -24,7 +26,7 @@ public class GuestController {
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/add")
-	public ResponseEntity<GuestDto> addGuest(@RequestBody GuestDto guestDto) {
+	public ResponseEntity<GuestDto> addGuest(@Valid @RequestBody GuestDto guestDto) {
 		return ResponseEntity.ok(guestService.addGuest(guestDto));
 	}
 

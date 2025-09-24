@@ -26,6 +26,7 @@ public class Staff {
 	private String email;
 	private String phone_Number;
 	private String role;
+	private String age;
 	private LocalDate joiningDate;
 
 	@OneToOne(mappedBy = "staff", cascade = CascadeType.ALL)

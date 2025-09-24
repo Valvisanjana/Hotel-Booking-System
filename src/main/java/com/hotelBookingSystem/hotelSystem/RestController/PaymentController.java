@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hotelBookingSystem.hotelSystem.dto.PaymentDto;
 import com.hotelBookingSystem.hotelSystem.service.PaymentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/payment")
 public class PaymentController {
@@ -27,7 +29,7 @@ public class PaymentController {
 
 	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/do/{bookingId}")
-	public ResponseEntity<PaymentDto> dopayment(@RequestBody PaymentDto paymentDto, @PathVariable int bookingId) {
+	public ResponseEntity<PaymentDto> dopayment(@Valid @RequestBody PaymentDto paymentDto, @PathVariable int bookingId) {
 		return ResponseEntity.ok(paymentService.doPayment(paymentDto, bookingId));
 	}
 
