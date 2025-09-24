@@ -22,11 +22,11 @@ public class HotelServiceImpl implements HotelService {
 	@Autowired
 	private ModelMapper modelMap;
 
-	public Hotel convertToEntity(HotelDto hotelDto) {
+	private Hotel convertToEntity(HotelDto hotelDto) {
 		return modelMap.map(hotelDto, Hotel.class);
 	}
 
-	public HotelDto convertToDto(Hotel hotel) {
+	private HotelDto convertToDto(Hotel hotel) {
 		return modelMap.map(hotel, HotelDto.class);
 	}
 
@@ -60,14 +60,14 @@ public class HotelServiceImpl implements HotelService {
 	@Override
 	public HotelDto updateHotelInfo(HotelDto hDto, int id) {
 		Hotel hotel = hotelRepo.findById(id)
-				.orElseThrow(() -> new HotelNotFoundException("Hotel Not Found With id: " +id));
-		
-			hotel.setHotelName(hDto.getHotelName());
-			hotel.setLocation(hDto.getLocation());
-		    hotel.setDescription(hDto.getDescription());
-			
-			Hotel updatedHotel = hotelRepo.save(hotel);
-		
+				.orElseThrow(() -> new HotelNotFoundException("Hotel Not Found With id: " + id));
+
+		hotel.setHotelName(hDto.getHotelName());
+		hotel.setLocation(hDto.getLocation());
+		hotel.setDescription(hDto.getDescription());
+
+		Hotel updatedHotel = hotelRepo.save(hotel);
+
 		return convertToDto(updatedHotel);
 	}
 

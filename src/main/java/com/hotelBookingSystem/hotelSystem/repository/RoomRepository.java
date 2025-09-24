@@ -6,11 +6,10 @@ import org.springframework.stereotype.Repository;
 import com.hotelBookingSystem.hotelSystem.entity.Room;
 
 @Repository
-public interface RoomRepository extends JpaRepository<Room, Integer>{
+public interface RoomRepository extends JpaRepository<Room, Integer> {
 
 	Room findByRoomNumber(String roomNumber);
 
 	Room findByRoomType(String roomType);
 
 }
- 

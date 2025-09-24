@@ -27,35 +27,31 @@ public class HotelController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/add")
 	public ResponseEntity<HotelDto> addHotel(@RequestBody HotelDto dto) {
-		HotelDto savedhotel = hotelService.addHotel(dto);
-		return ResponseEntity.ok(savedhotel);
+		return ResponseEntity.ok(hotelService.addHotel(dto));
 	}
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/getHotelBy/{id}")
 	public ResponseEntity<HotelDto> getHotelById(@PathVariable int id) {
-		HotelDto getHotel = hotelService.getHotelById(id);
-		return ResponseEntity.ok(getHotel);
+		return ResponseEntity.ok(hotelService.getHotelById(id));
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN','USER')")
 	@GetMapping("/getHotel/{name}")
 	public ResponseEntity<HotelDto> getHotelByname(@PathVariable("name") String hotelName) {
-		HotelDto getHotel = hotelService.getHotelByName(hotelName);
-		return ResponseEntity.ok(getHotel);
+		return ResponseEntity.ok(hotelService.getHotelByName(hotelName));
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN','USER')")
 	@GetMapping("/getHotelList")
 	public ResponseEntity<List<HotelDto>> getAll() {
 		return ResponseEntity.ok(hotelService.getHotels());
-	} 
+	}
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/edit/{id}")
 	public ResponseEntity<HotelDto> editHotel(@RequestBody HotelDto dto, @PathVariable int id) {
-		HotelDto updatedHotel = hotelService.updateHotelInfo(dto, id);
-		return ResponseEntity.ok(updatedHotel);
+		return ResponseEntity.ok(hotelService.updateHotelInfo(dto, id));
 	}
 
 	@PreAuthorize("hasRole('ADMIN')")

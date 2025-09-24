@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoomDto {
-	private int roomId;
-	private String roomNumber;
-	private String roomType;
-	private double pricePerNight;
-	private String status;
+public class AddressDto {
+	private int addressId;
+	private String street;
+	private String city;
+	private String state;
+	private String Country;
+	private String pincode;
 }

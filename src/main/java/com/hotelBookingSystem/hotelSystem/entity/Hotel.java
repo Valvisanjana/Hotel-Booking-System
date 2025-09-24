@@ -23,11 +23,11 @@ public class Hotel {
 	private int hotelId;
 	private String hotelName;
 	private String location;
-    private String description;
-	
+	private String description;
+
 	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
 	private List<Room> rooms;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Staff> staff;
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Staff> staff;
 }

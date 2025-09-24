@@ -10,28 +10,52 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.hotelBookingSystem.hotelSystem.dto.ErrorResponse;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler { 
-	
+public class GlobalExceptionHandler {
+
 	@ExceptionHandler(UserNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleUserNotFound (UserNotFoundException ex){
+	public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFoundException ex) {
 		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND); 
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
-	
+
 	@ExceptionHandler(HotelNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleHotelNotFound (HotelNotFoundException ex) {
+	public ResponseEntity<ErrorResponse> handleHotelNotFound(HotelNotFoundException ex) {
+		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(GuestNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleGuestNotFound(GuestNotFoundException ex) {
+		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(BookingNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleBookingNotFound(BookingNotFoundException ex) {
+		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(RoomNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleRoomNotFound(RoomNotFoundException ex) {
+		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(AddressNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleAddressNotFound(AddressNotFoundException ex) {
 		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 	
-	@ExceptionHandler(RoomNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleRoomNotFound (RoomNotFoundException ex) {
+	@ExceptionHandler(StaffNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleStaffNotFound(StaffNotFoundException ex) {
 		ErrorResponse error = new ErrorResponse(ex.getMessage(), LocalDateTime.now());
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);		
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<String> handleException (Exception ex) {
-		return new ResponseEntity<>("Something went wrong" + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); 
+	public ResponseEntity<String> handleException(Exception ex) {
+		return new ResponseEntity<>("Something went wrong" + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-} 
+}

@@ -12,18 +12,18 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor 
+@AllArgsConstructor
 @Entity
-public class Room { 
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private int roomId; 
-     private String roomNumber;
-     private String roomType;
-     private double pricePerNight;
-     private String status;
-     
-     @ManyToOne
-     @JoinColumn(name = "hotel_id") 
-     private Hotel hotel;
+public class Room {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int roomId;
+	private String roomNumber;
+	private String roomType;
+	private double pricePerNight;
+	private String status;
+
+	@ManyToOne
+	@JoinColumn(name = "hotel_id")
+	private Hotel hotel;
 }

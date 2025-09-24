@@ -56,11 +56,11 @@ public class AuthController {
 
 	@PostMapping("/login")
 	public LoginResponse userLogin(@RequestBody LoginRequest loginReq) {
-			Authentication authentication = authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(loginReq.getUserName(), loginReq.getPassword()));
-			
-			String token = jwtTokenProvider.generateToken(loginReq.getUserName());
-			return new LoginResponse(token);
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(loginReq.getUserName(), loginReq.getPassword()));
+
+		String token = jwtTokenProvider.generateToken(loginReq.getUserName());
+		return new LoginResponse(token);
 	}
 
 }

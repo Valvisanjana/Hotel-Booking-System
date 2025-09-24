@@ -16,18 +16,18 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor 
+@AllArgsConstructor
 @Entity
-public class User implements UserDetails{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String userName;
-    private String email;
-    private String contactNo;
-    private String password;
-    private String role;
-    
+public class User implements UserDetails {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String userName;
+	private String email;
+	private String contactNo;
+	private String password;
+	private String role;
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return Collections.singletonList(new SimpleGrantedAuthority(role));
@@ -42,11 +42,11 @@ public class User implements UserDetails{
 	public String getUsername() {
 		return userName;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -56,15 +56,15 @@ public class User implements UserDetails{
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isEnabled() {
 		return true;
 	}
-    
+
 }

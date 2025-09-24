@@ -11,6 +11,6 @@ public class HotelDto {
 	private int hotelId;
 	private String hotelName;
 	private String location;
-    private String description;
+	private String description;
 
 }

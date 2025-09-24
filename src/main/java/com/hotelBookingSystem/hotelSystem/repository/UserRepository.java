@@ -6,11 +6,10 @@ import org.springframework.stereotype.Repository;
 import com.hotelBookingSystem.hotelSystem.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>{
+public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByEmail(String email);
 
 	User findByUserName(String username);
 
-       
-} 
+}

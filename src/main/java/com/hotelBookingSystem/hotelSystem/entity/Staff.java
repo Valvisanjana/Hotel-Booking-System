@@ -19,20 +19,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Staff {
-    @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private int staffId;
-    private String staffName;
-    private String email;
-    private String phone_Number;
-    private LocalDate joiningDate;
-    
-    @OneToOne(mappedBy = "staff", cascade = CascadeType.ALL)
-    private Address address;
-    
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
-    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int staffId;
+	private String staffName;
+	private String email;
+	private String phone_Number;
+	private String role;
+	private LocalDate joiningDate;
+
+	@OneToOne(mappedBy = "staff", cascade = CascadeType.ALL)
+	private Address address;
+
+	@ManyToOne
+	@JoinColumn(name = "hotel_id")
+	private Hotel hotel;
 
 }

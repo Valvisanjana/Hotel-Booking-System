@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ErrorResponse {
-       private String message;
-       private LocalDateTime localDateTime; 
+	private String message;
+	private LocalDateTime localDateTime;
 }

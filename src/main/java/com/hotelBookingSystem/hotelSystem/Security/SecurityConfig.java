@@ -26,46 +26,39 @@ public class SecurityConfig {
 
 	@Autowired
 	private MyUserDetailsService userDetail;
-	
+
 	@Autowired
 	private JwtFilter jwtFilter;
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-		.csrf(csrf -> csrf.disable())
-		.authorizeHttpRequests(auth -> auth
-				.requestMatchers("/api/register", "/api/login").permitAll()
-				.requestMatchers("/admin/**").hasAnyRole("USER","ADMIN")
-				.requestMatchers("/admin/**").hasRole("ADMIN")
-				.requestMatchers("/user/**").hasRole("USER")
-				.anyRequest().authenticated())
-                
+		http.csrf(csrf -> csrf.disable())
+				.authorizeHttpRequests(auth -> auth.requestMatchers("/api/register", "/api/login").permitAll()
+						.requestMatchers("/admin/**").hasAnyRole("USER", "ADMIN").requestMatchers("/admin/**")
+						.hasRole("ADMIN").requestMatchers("/user/**").hasRole("USER").anyRequest().authenticated())
+
 				.authenticationProvider(authenticationProvider())
 				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-				
-		
+
 		return http.build();
-	} 
-	
+	}
+
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
-	
-	@Bean 
+
+	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setPasswordEncoder(passwordEncoder());
 		provider.setUserDetailsService(userDetail);
 		return provider;
 	}
-	
-	
+
 }
- 
